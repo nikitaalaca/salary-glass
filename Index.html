@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+/>
+
+<meta
+name="apple-mobile-web-app-capable"
+content="yes"
+/>
+
+<meta
+name="apple-mobile-web-app-status-bar-style"
+content="black-translucent"
+/>
+
+<meta
+name="theme-color"
+content="#0f172a"
+/>
+
+<title>Salary Glass</title>
+
+<link
+rel="preconnect"
+href="https://fonts.googleapis.com"
+/>
+
+<link
+rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin
+/>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+rel="stylesheet"
+/>
+
+<style>
+
+:root{
+
+--glass:rgba(255,255,255,.12);
+--glass-border:rgba(255,255,255,.16);
+--text:rgba(255,255,255,.92);
+--sub:rgba(255,255,255,.62);
+
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+-webkit-tap-highlight-color:transparent;
+}
+
+body{
+
+font-family:'Inter',sans-serif;
+
+min-height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+padding:20px;
+
+overflow:hidden;
+
+background:
+linear-gradient(
+135deg,
+#020617,
+#0f172a,
+#1e293b
+);
+
+position:relative;
+
+}
+
+body::before{
+
+content:'';
+
+position:fixed;
+inset:0;
+
+background:
+url('https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1600&auto=format&fit=crop')
+center/cover;
+
+filter:
+blur(14px)
+brightness(.7);
+
+transform:scale(1.08);
+
+z-index:-2;
+
+}
+
+body::after{
+
+content:'';
+
+position:fixed;
+inset:0;
+
+background:
+radial-gradient(
+circle at top,
+rgba(255,255,255,.14),
+transparent 35%
+),
+
+linear-gradient(
+rgba(15,23,42,.4),
+rgba(15,23,42,.7)
+);
+
+z-index:-1;
+
+}
+
+.app{
+
+width:100%;
+max-width:430px;
+
+padding:22px;
+
+border-radius:42px;
+
+background:
+rgba(255,255,255,.08);
+
+backdrop-filter:
+blur(30px)
+saturate(180%);
+
+-webkit-backdrop-filter:
+blur(30px)
+saturate(180%);
+
+border:
+1px solid rgba(255,255,255,.14);
+
+box-shadow:
+0 10px 40px rgba(0,0,0,.35),
+
+inset 0 1px 1px
+rgba(255,255,255,.18);
+
+animation:
+intro .8s cubic-bezier(.22,1,.36,1);
+
+}
+
+@keyframes intro{
+
+from{
+opacity:0;
+transform:
+translateY(30px)
+scale(.96);
+}
+
+to{
+opacity:1;
+transform:
+translateY(0)
+scale(1);
+}
+
+}
+
+.top{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+margin-bottom:26px;
+
+}
+
+.title{
+
+color:white;
+
+font-size:34px;
+
+font-weight:800;
+
+letter-spacing:-1.6px;
+
+}
+
+.install{
+
+padding:12px 16px;
+
+border-radius:18px;
+
+border:none;
+
+color:white;
+
+font-weight:600;
+
+background:
+rgba(255,255,255,.12);
+
+border:
+1px solid rgba(255,255,255,.12);
+
+backdrop-filter:blur(12px);
+
+}
+
+.card{
+
+margin-bottom:18px;
+
+padding:18px;
+
+border-radius:28px;
+
+background:
+rgba(255,255,255,.07);
+
+border:
+1px solid rgba(255,255,255,.1);
+
+backdrop-filter:blur(20px);
+
+}
+
+.label{
+
+margin-bottom:12px;
+
+font-size:14px;
+
+font-weight:600;
+
+color:var(--sub);
+
+}
+
+input{
+
+width:100%;
+
+padding:18px;
+
+border:none;
+
+outline:none;
+
+border-radius:22px;
+
+font-size:18px;
+
+font-weight:600;
+
+color:white;
+
+background:
+rgba(255,255,255,.12);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+backdrop-filter:blur(14px);
+
+transition:.25s;
+
+}
+
+input:focus{
+
+transform:scale(1.015);
+
+background:
+rgba(255,255,255,.16);
+
+}
+
+input::placeholder{
+color:rgba(255,255,255,.45);
+}
+
+.grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:14px;
+
+}
+
+.kpi{
+
+padding:16px;
+
+border-radius:24px;
+
+background:
+rgba(255,255,255,.08);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+}
+
+.kpi-title{
+
+color:white;
+
+margin-bottom:14px;
+
+font-weight:700;
+
+}
+
+.kpi-inputs{
+
+display:flex;
+
+gap:10px;
+
+}
+
+.result{
+
+margin-top:24px;
+
+padding:22px;
+
+border-radius:32px;
+
+background:
+rgba(255,255,255,.12);
+
+border:
+1px solid rgba(255,255,255,.12);
+
+backdrop-filter:blur(18px);
+
+}
+
+.row{
+
+display:flex;
+justify-content:space-between;
+
+margin-bottom:18px;
+
+color:white;
+
+font-size:17px;
+
+}
+
+.total{
+
+margin-top:22px;
+
+padding-top:20px;
+
+border-top:
+1px solid rgba(255,255,255,.1);
+
+font-size:34px;
+
+font-weight:800;
+
+letter-spacing:-1px;
+
+}
+
+.footer{
+
+margin-top:20px;
+
+text-align:center;
+
+font-size:13px;
+
+color:
+rgba(255,255,255,.45);
+
+}
+
+@media(max-width:480px){
+
+.title{
+font-size:28px;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="top">
+
+<div class="title">
+Salary Glass
+</div>
+
+<button class="install">
++ Add
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="label">
+Ставка за час
+</div>
+
+<input
+type="number"
+id="rate"
+value="199"
+/>
+
+</div>
+
+<div class="card">
+
+<div class="label">
+Часы за месяц
+</div>
+
+<input
+type="number"
+id="hours"
+value="186"
+/>
+
+</div>
+
+<div class="card">
+
+<div class="label">
+KPI
+</div>
+
+<div class="grid">
+
+<div class="kpi">
+
+<div class="kpi-title">
+KPI 1
+</div>
+
+<div class="kpi-inputs">
+
+<input
+type="number"
+class="kpiPercent"
+value="30"
+/>
+
+<input
+type="number"
+class="kpiValue"
+value="106"
+/>
+
+</div>
+
+</div>
+
+<div class="kpi">
+
+<div class="kpi-title">
+KPI 2
+</div>
+
+<div class="kpi-inputs">
+
+<input
+type="number"
+class="kpiPercent"
+value="30"
+/>
+
+<input
+type="number"
+class="kpiValue"
+value="115"
+/>
+
+</div>
+
+</div>
+
+<div class="kpi">
+
+<div class="kpi-title">
+KPI 3
+</div>
+
+<div class="kpi-inputs">
+
+<input
+type="number"
+class="kpiPercent"
+value="20"
+/>
+
+<input
+type="number"
+class="kpiValue"
+value="101"
+/>
+
+</div>
+
+</div>
+
+<div class="kpi">
+
+<div class="kpi-title">
+KPI 4
+</div>
+
+<div class="kpi-inputs">
+
+<input
+type="number"
+class="kpiPercent"
+value="20"
+/>
+
+<input
+type="number"
+class="kpiValue"
+value="105"
+/>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="result">
+
+<div class="row">
+<span>Ставка</span>
+<span id="rateResult">
+199 ₽
+</span>
+</div>
+
+<div class="row">
+<span>Оклад</span>
+<span id="salaryResult">
+37014 ₽
+</span>
+</div>
+
+<div class="row">
+<span>Бонус</span>
+<span id="bonusResult">
+0 ₽
+</span>
+</div>
+
+<div class="row total">
+<span>Итого</span>
+<span id="totalResult">
+0 ₽
+</span>
+</div>
+
+</div>
+
+<div class="footer">
+Apple Liquid Glass UI
+</div>
+
+</div>
+
+<script>
+
+const rate =
+document.getElementById('rate');
+
+const hours =
+document.getElementById('hours');
+
+const rateResult =
+document.getElementById('rateResult');
+
+const salaryResult =
+document.getElementById('salaryResult');
+
+const bonusResult =
+document.getElementById('bonusResult');
+
+const totalResult =
+document.getElementById('totalResult');
+
+const kpiPercent =
+document.querySelectorAll('.kpiPercent');
+
+const kpiValue =
+document.querySelectorAll('.kpiValue');
+
+function format(num){
+
+return new Intl.NumberFormat(
+'ru-RU'
+).format(num);
+
+}
+
+function calculate(){
+
+const rateValue =
+Number(rate.value);
+
+const hoursValue =
+Number(hours.value);
+
+const salary =
+rateValue * hoursValue;
+
+let bonus = 0;
+
+for(let i=0;i<4;i++){
+
+bonus +=
+Number(kpiPercent[i].value)
+*
+Number(kpiValue[i].value)
+*
+4;
+
+}
+
+const total =
+salary + bonus;
+
+rateResult.innerText =
+format(rateValue) + ' ₽';
+
+salaryResult.innerText =
+format(salary) + ' ₽';
+
+bonusResult.innerText =
+format(bonus) + ' ₽';
+
+totalResult.innerText =
+format(total) + ' ₽';
+
+}
+
+[
+rate,
+hours,
+...kpiPercent,
+...kpiValue
+].forEach(el=>{
+
+el.addEventListener(
+'input',
+calculate
+);
+
+});
+
+calculate();
+
+</script>
+
+</body>
+</html>
