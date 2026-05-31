@@ -3,7 +3,7 @@
 
 <head>
 
-<meta charset="UTF-8">
+<meta charset="UTF-8"/>
 
 <meta
 name="viewport"
@@ -22,10 +22,10 @@ content="black-translucent"
 
 <meta
 name="theme-color"
-content="#020617"
+content="#050816"
 />
 
-<title> CASH CALC</title>
+<title>Q.Counter Glass</title>
 
 <style>
 
@@ -37,16 +37,19 @@ src:local('SF Pro Display');
 :root{
 
 --glass:
-rgba(255,255,255,.06);
+rgba(255,255,255,.07);
 
 --border:
 rgba(255,255,255,.12);
 
 --text:
-rgba(255,255,255,.95);
+rgba(255,255,255,.96);
 
 --sub:
-rgba(255,255,255,.55);
+rgba(255,255,255,.52);
+
+--shadow:
+0 20px 70px rgba(0,0,0,.45);
 
 }
 
@@ -75,8 +78,6 @@ sans-serif;
 
 min-height:100vh;
 
-overflow-y:auto;
-
 padding:
 max(18px, env(safe-area-inset-top))
 18px
@@ -90,14 +91,12 @@ linear-gradient(
 #0b1324
 );
 
-display:flex;
-justify-content:center;
+overflow-y:auto;
 
 position:relative;
 
-margin:0;
-
-background-attachment:fixed;
+display:flex;
+justify-content:center;
 
 }
 
@@ -109,12 +108,13 @@ position:fixed;
 inset:0;
 
 background:
-url('https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1600&auto=format&fit=crop')
+url('https://images.unsplash.com/photo-1519608487953-e999c86e7455?q=80&w=1600&auto=format&fit=crop')
 center/cover;
 
 filter:
-blur(22px)
-brightness(.45);
+blur(24px)
+brightness(.35)
+saturate(130%);
 
 transform:scale(1.08);
 
@@ -130,353 +130,115 @@ position:fixed;
 inset:0;
 
 background:
+
 radial-gradient(
 circle at top,
-rgba(0,140,255,.16),
-transparent 28%
+rgba(0,140,255,.14),
+transparent 30%
 ),
 
 radial-gradient(
 circle at bottom,
-rgba(255,0,180,.10),
-transparent 30%
+rgba(255,0,180,.12),
+transparent 35%
 ),
 
-rgba(0,0,0,.32);
+rgba(0,0,0,.28);
 
 z-index:-2;
 
 }
 
-.app{
+.page{
 
 width:100%;
 max-width:430px;
 
+display:flex;
+flex-direction:column;
+
+gap:18px;
+
+}
+
+.panel{
+
 padding:22px;
 
-margin-top:10px;
-margin-bottom:40px;
-
-border-radius:44px;
+border-radius:42px;
 
 background:
 rgba(255,255,255,.06);
 
 backdrop-filter:
-blur(40px)
+blur(42px)
 saturate(180%);
 
 -webkit-backdrop-filter:
-blur(40px)
+blur(42px)
 saturate(180%);
 
 border:
 1px solid rgba(255,255,255,.10);
 
 box-shadow:
-0 20px 70px rgba(0,0,0,.45),
+
+var(--shadow),
 
 inset 0 1px 1px
 rgba(255,255,255,.12);
 
-position:relative;
-
 display:flex;
 flex-direction:column;
+
 gap:18px;
 
-overflow:visible;
+position:relative;
+
+overflow:hidden;
 
 }
 
-.app::before{
+.panel::before{
 
 content:'';
 
 position:absolute;
 inset:0;
 
-border-radius:44px;
-
-padding:1px;
-
 background:
 linear-gradient(
 135deg,
-rgba(255,255,255,.22),
+rgba(255,255,255,.10),
 transparent,
-rgba(255,255,255,.08)
+rgba(255,255,255,.04)
 );
-
--webkit-mask:
-linear-gradient(#fff 0 0)
-content-box,
-linear-gradient(#fff 0 0);
-
--webkit-mask-composite:xor;
 
 pointer-events:none;
 
 }
 
-.top{
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-margin-bottom:2px;
-
-}
-
 .title{
 
-font-size:18px;
-
-font-weight:800;
-
-letter-spacing:-2px;
-
-color:white;
-
-}
-
-.install{
-
-width:78px;
-height:78px;
-
-border-radius:999px;
-
-border:
-1px solid rgba(255,255,255,.16);
-
-background:
-rgba(255,255,255,.08);
-
-backdrop-filter:
-blur(30px);
-
--webkit-backdrop-filter:
-blur(30px);
-
-color:white;
-
-font-size:36px;
-
-font-weight:300;
-
-cursor:pointer;
-
-box-shadow:
-
-inset 0 1px 1px
-rgba(255,255,255,.18),
-
-0 10px 30px
-rgba(0,0,0,.22);
-
-transition:.3s;
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-.install::before{
-
-content:'';
-
-position:absolute;
-inset:0;
-
-background:
-linear-gradient(
-120deg,
-transparent,
-rgba(255,255,255,.16),
-transparent
-);
-
-transform:translateX(-100%);
-
-animation:
-shine 4s infinite;
-
-}
-
-.install:active{
-
-transform:scale(.95);
-
-}
-
-@keyframes shine{
-
-100%{
-transform:translateX(100%);
-}
-
-}
-
-.row2{
-
-display:grid;
-
-grid-template-columns:
-1fr 1fr;
-
-gap:18px;
-
-}
-
-.card{
-
-padding:18px;
-
-border-radius:34px;
-
-background:
-rgba(255,255,255,.05);
-
-border:
-1px solid rgba(255,255,255,.08);
-
-backdrop-filter:
-blur(24px);
-
--webkit-backdrop-filter:
-blur(24px);
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-.card::before{
-
-content:'';
-
-position:absolute;
-
-width:160px;
-height:160px;
-
-background:
-radial-gradient(
-circle,
-rgba(255,255,255,.10),
-transparent 70%
-);
-
-top:-80px;
-right:-80px;
-
-}
-
-.label{
-
-font-size:15px;
-
-font-weight:600;
-
-color:var(--sub);
-
-margin-bottom:16px;
-
-}
-
-.input{
-
-height:92px;
-
-border-radius:28px;
-
-background:
-rgba(255,255,255,.06);
-
-border:
-1px solid rgba(255,255,255,.08);
-
-display:flex;
-align-items:center;
-
-padding:0 24px;
-
-}
-
-.input input{
-
-width:100%;
-
-background:none;
-
-border:none;
-
-outline:none;
-
-color:white;
-
-font-size:34px;
+font-size:30px;
 
 font-weight:700;
 
-font-family:inherit;
+letter-spacing:-1px;
+
+color:white;
+
+margin-bottom:6px;
 
 }
 
-.unit{
+.beta{
 
-font-size:28px;
-
-font-weight:700;
-
-color:
-rgba(255,255,255,.5);
+opacity:.55;
 
 }
 
-.kpi-wrapper{
-
-padding:20px;
-
-border-radius:34px;
-
-background:
-rgba(255,255,255,.05);
-
-border:
-1px solid rgba(255,255,255,.08);
-
-}
-
-.kpi-title-main{
-
-font-size:16px;
-
-font-weight:700;
-
-color:var(--sub);
-
-margin-bottom:18px;
-
-}
-
-.kpi-grid{
-
-display:grid;
-
-grid-template-columns:
-1fr 1fr;
-
-gap:18px;
-
-}
-
-.kpi-card{
+.glass-block{
 
 padding:18px;
 
@@ -488,46 +250,309 @@ rgba(255,255,255,.05);
 border:
 1px solid rgba(255,255,255,.08);
 
+backdrop-filter:
+blur(24px);
+
+-webkit-backdrop-filter:
+blur(24px);
+
+position:relative;
+
+overflow:hidden;
+
+transition:.35s;
+
+}
+
+.glass-block::before{
+
+content:'';
+
+position:absolute;
+
+width:180px;
+height:180px;
+
+background:
+radial-gradient(
+circle,
+rgba(255,255,255,.08),
+transparent 70%
+);
+
+top:-90px;
+right:-90px;
+
+}
+
+.big,
+.kpi-label,
+.hours-col label{
+
+display:block;
+
+font-size:14px;
+
+font-weight:600;
+
+color:var(--sub);
+
+margin-bottom:12px;
+
+padding-left:2px;
+
+}
+
+select,
+input{
+
+width:100%;
+
+height:68px;
+
+border:none;
+
+outline:none;
+
+border-radius:24px;
+
+padding:0 18px;
+
+background:
+rgba(255,255,255,.06);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+color:white;
+
+font-size:24px;
+
+font-weight:700;
+
+font-family:inherit;
+
+appearance:none;
+
+-webkit-appearance:none;
+
+backdrop-filter:
+blur(20px);
+
+-webkit-backdrop-filter:
+blur(20px);
+
+transition:.3s;
+
+}
+
+input[type=range]{
+
+height:12px;
+
+padding:0;
+
+border-radius:999px;
+
+background:
+rgba(255,255,255,.12);
+
+}
+
+option{
+
+background:#101828;
+color:white;
+
+}
+
+.hours-block{
+
 display:flex;
 flex-direction:column;
 
 gap:18px;
 
-min-height:210px;
+}
+
+.hours-title{
+
+font-size:22px;
+
+font-weight:700;
+
+letter-spacing:-1px;
+
+color:white;
+
+}
+
+.hours-grid{
+
+display:grid;
+
+grid-template-columns:
+1fr 1fr 1fr;
+
+gap:12px;
+
+}
+
+.hours-col{
+
+display:flex;
+flex-direction:column;
+
+gap:8px;
+
+}
+
+.hours-hint{
+
+font-size:12px;
+
+line-height:1.5;
+
+color:
+rgba(255,255,255,.38);
 
 }
 
 .kpi-title{
 
-font-size:22px;
+font-size:24px;
 
-font-weight:800;
+font-weight:700;
+
+letter-spacing:-1px;
 
 color:white;
+
+margin-top:4px;
+
+}
+
+.hint{
+
+font-size:13px;
+
+line-height:1.5;
+
+color:
+rgba(255,255,255,.42);
+
+margin-top:-10px;
+
+}
+
+.kpi-row{
+
+display:grid;
+
+grid-template-columns:
+1fr 1fr;
+
+gap:14px;
+
+}
+
+.kpi-block{
+
+display:flex;
+flex-direction:column;
+
+gap:14px;
 
 }
 
 .kpi-inputs{
 
 display:flex;
+flex-direction:column;
 
 gap:12px;
 
 }
 
-.small{
+.result-block{
 
-height:74px;
+padding:24px;
+
+border-radius:34px;
+
+background:
+rgba(255,255,255,.05);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+display:flex;
+flex-direction:column;
+
+gap:20px;
+
+backdrop-filter:
+blur(24px);
+
+-webkit-backdrop-filter:
+blur(24px);
 
 }
 
-.small input{
+.result-row{
 
-font-size:24px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 
 }
 
-.calc{
+.res-label{
+
+font-size:16px;
+
+font-weight:600;
+
+color:
+rgba(255,255,255,.58);
+
+}
+
+.res-val{
+
+font-size:21px;
+
+font-weight:700;
+
+letter-spacing:-.5px;
+
+color:white;
+
+}
+
+.total{
+
+padding-top:20px;
+
+border-top:
+1px solid rgba(255,255,255,.08);
+
+}
+
+.total .res-label,
+.total .res-val{
+
+font-size:34px;
+
+font-weight:800;
+
+letter-spacing:-1px;
+
+color:white;
+
+}
+
+.calc-btn{
 
 width:100%;
 
@@ -558,205 +583,62 @@ blur(40px);
 
 color:white;
 
-font-size:30px;
+font-size:28px;
 
 font-weight:700;
 
 letter-spacing:-1px;
 
 border:
-1px solid rgba(255,255,255,.18);
+1px solid rgba(255,255,255,.16);
 
 box-shadow:
 
-0 0 30px
-rgba(0,140,255,.20),
+0 0 30px rgba(0,140,255,.20),
 
-inset 0 1px 1px
-rgba(255,255,255,.18);
+inset 0 1px 1px rgba(255,255,255,.18);
 
-transition:.3s;
+transition:.35s;
 
 }
 
-.calc::before{
-
-content:'';
-
-position:absolute;
-inset:0;
-
-background:
-linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,.18),
-transparent
-);
-
-transform:translateX(-100%);
-
-animation:
-shine 3s infinite;
-
-}
-
-.calc:active{
+.calc-btn:active{
 
 transform:scale(.98);
 
 }
 
-.results{
+.slider-value{
 
-padding:24px;
+margin-top:10px;
 
-border-radius:34px;
-
-background:
-rgba(255,255,255,.05);
-
-border:
-1px solid rgba(255,255,255,.08);
-
-}
-
-.results-title{
-
-font-size:20px;
+font-size:28px;
 
 font-weight:700;
 
 color:white;
 
-margin-bottom:24px;
-
-}
-
-.result-row{
-
-display:flex;
-justify-content:space-between;
-
-margin-bottom:22px;
-
-font-size:18px;
-
-color:white;
-
-}
-
-.total{
-
-margin-top:18px;
-
-padding-top:22px;
-
-border-top:
-1px solid rgba(255,255,255,.08);
-
-font-size:42px;
-
-font-weight:800;
-
-letter-spacing:-2px;
-
-}
-
-.footer{
-
-margin-top:6px;
-
 text-align:center;
-
-font-size:13px;
-
-color:
-rgba(255,255,255,.35);
-
-}
-
-.popup{
-
-position:fixed;
-
-top:40px;
-left:50%;
-
-transform:
-translateX(-50%)
-translateY(-20px);
-
-padding:18px 26px;
-
-border-radius:28px;
-
-background:
-rgba(255,255,255,.08);
-
-backdrop-filter:
-blur(40px)
-saturate(180%);
-
--webkit-backdrop-filter:
-blur(40px)
-saturate(180%);
-
-border:
-1px solid rgba(255,255,255,.16);
-
-color:white;
-
-font-size:16px;
-
-font-weight:700;
-
-letter-spacing:-.4px;
-
-z-index:9999;
-
-opacity:0;
-
-pointer-events:none;
-
-transition:.45s;
-
-box-shadow:
-0 20px 60px rgba(0,0,0,.35);
-
-text-align:center;
-
-max-width:90%;
-
-}
-
-.popup.show{
-
-opacity:1;
-
-transform:
-translateX(-50%)
-translateY(0);
 
 }
 
 @media(max-width:480px){
 
-.title{
-font-size:28px;
-}
-
-.row2,
-.kpi-grid{
+.kpi-row{
 grid-template-columns:1fr;
 }
 
-.input input{
-font-size:30px;
+.hours-grid{
+grid-template-columns:1fr;
 }
 
-.total{
-font-size:34px;
+.title{
+font-size:26px;
+}
+
+.total .res-label,
+.total .res-val{
+font-size:26px;
 }
 
 }
@@ -767,157 +649,203 @@ font-size:34px;
 
 <body>
 
-<div class="app">
+<div class="page">
 
-<div class="top">
+<div class="panel">
 
-<div class="title">
-CASH КАЛЬКУЛЯТОР 
-</div>
+<h1 class="title">
+Q.Counter
+<span class="beta">
+:)
+</span>
+</h1>
 
-<button
-class="install"
-onclick="showPopup()"
+<!-- ОКЛАД -->
+
+<div class="glass-block">
+
+<label class="big">
+Ставка / час
+</label>
+
+<input
+type="range"
+id="rateSlider"
+min="100"
+max="500"
+value="250"
+/>
+
+<div
+class="slider-value"
+id="rateValue"
 >
-＋
-</button>
+250 ₽
+</div>
 
 </div>
 
-<div class="row2">
+<!-- ПРЕМИЯ -->
 
-<div class="card">
+<div class="glass-block">
 
-<div class="label">
-Ставка в час оклад
-</div>
-
-<div class="input">
+<label class="big">
+Базовая премия
+</label>
 
 <input
-type="number"
-id="rateLunch"
-value="199"
+type="range"
+id="premiumSlider"
+min="100"
+max="500"
+value="250"
 />
 
-<div class="unit">
-₽
+<div
+class="slider-value"
+id="premiumValue"
+>
+250 ₽
 </div>
 
 </div>
 
+<!-- FORMAT -->
+
+<div class="glass-block">
+
+<label class="big">
+Формат точки
+</label>
+
+<select id="format">
+
+<option value="BR">
+BR
+</option>
+
+<option value="MAU">
+MAU
+</option>
+
+</select>
+
 </div>
 
-<div class="card">
+<!-- HOURS -->
 
-<div class="label">
-Ставка в час премия 
-</div>
+<div class="glass-block hours-block">
 
-<div class="input">
+<h3 class="hours-title">
+Часы
+</h3>
+
+<div class="hours-grid">
+
+<div class="hours-col">
+
+<label>
+с обедом
+</label>
 
 <input
+id="hoursWith"
 type="number"
-id="rateNoLunch"
-value="185"
+placeholder="0"
 />
 
-<div class="unit">
-₽
 </div>
 
-</div>
+<div class="hours-col">
 
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="label">
-Часы за месяц
-</div>
-
-<div class="input">
+<label>
+без обеда
+</label>
 
 <input
+id="hoursWithout"
 type="number"
-id="hours"
-value="186"
+placeholder="0"
 />
 
-<div class="unit">
-ч
+</div>
+
+<div class="hours-col">
+
+<label>
+буферные
+</label>
+
+<input
+id="hoursBuffer"
+type="number"
+placeholder="0"
+/>
+
 </div>
 
 </div>
 
+<p class="hours-hint">
+брифы, обучение, праздничные и т.д.
+</p>
+
 </div>
 
-<div class="kpi-wrapper">
+<!-- KPI -->
 
-<div class="kpi-title-main">
+<h2 class="kpi-title">
 KPI
-</div>
+</h2>
 
-<div class="kpi-grid">
+<p class="hint">
+Сумма весов KPI должна быть 100%
+</p>
 
-<div class="kpi-card">
+<div class="kpi-row">
 
-<div class="kpi-title">
+<div class="glass-block kpi-block">
+
+<label class="kpi-label">
 KPI 1
-</div>
+</label>
 
 <div class="kpi-inputs">
 
-<div class="input small">
-
 <input
+id="w1"
 type="number"
-class="kpiPercent"
-value="30"
+placeholder="Вес %"
 />
 
-</div>
-
-<div class="input small">
-
 <input
+id="v1"
 type="number"
-class="kpiValue"
-value="106"
+placeholder="% выполнения"
 />
 
 </div>
 
 </div>
 
-</div>
+<div class="glass-block kpi-block">
 
-<div class="kpi-card">
-
-<div class="kpi-title">
+<label class="kpi-label">
 KPI 2
-</div>
+</label>
 
 <div class="kpi-inputs">
 
-<div class="input small">
-
 <input
+id="w2"
 type="number"
-class="kpiPercent"
-value="30"
+placeholder="Вес %"
 />
 
-</div>
-
-<div class="input small">
-
 <input
+id="v2"
 type="number"
-class="kpiValue"
-value="115"
+placeholder="% выполнения"
 />
 
 </div>
@@ -926,67 +854,51 @@ value="115"
 
 </div>
 
-<div class="kpi-card">
+<div class="kpi-row">
 
-<div class="kpi-title">
+<div class="glass-block kpi-block">
+
+<label class="kpi-label">
 KPI 3
-</div>
+</label>
 
 <div class="kpi-inputs">
 
-<div class="input small">
-
 <input
+id="w3"
 type="number"
-class="kpiPercent"
-value="20"
+placeholder="Вес %"
 />
 
-</div>
-
-<div class="input small">
-
 <input
+id="v3"
 type="number"
-class="kpiValue"
-value="101"
+placeholder="% выполнения"
 />
 
 </div>
 
 </div>
 
-</div>
+<div class="glass-block kpi-block">
 
-<div class="kpi-card">
-
-<div class="kpi-title">
+<label class="kpi-label">
 KPI 4
-</div>
+</label>
 
 <div class="kpi-inputs">
 
-<div class="input small">
-
 <input
+id="w4"
 type="number"
-class="kpiPercent"
-value="20"
+placeholder="Вес %"
 />
 
-</div>
-
-<div class="input small">
-
 <input
+id="v4"
 type="number"
-class="kpiValue"
-value="105"
+placeholder="% выполнения"
 />
-
-</div>
-
-</div>
 
 </div>
 
@@ -995,158 +907,325 @@ value="105"
 </div>
 
 <button
-class="calc"
+class="calc-btn"
 onclick="calculate()"
 >
 ✦ Рассчитать
 </button>
 
-<div class="results">
-
-<div class="results-title">
-Результаты
-</div>
+<div class="result-block">
 
 <div class="result-row">
-<span>Ставка в час</span>
-<span id="rateResult">
-199 ₽
-</span>
-</div>
 
-<div class="result-row">
-<span>Оклад</span>
-<span id="salaryResult">
-0 ₽
-</span>
-</div>
-
-<div class="result-row">
-<span>Бонус KPI</span>
-<span id="bonusResult">
-0 ₽
-</span>
-</div>
-
-<div class="result-row total">
-<span>Итого</span>
-<span id="totalResult">
-0 ₽
-</span>
-</div>
-
-</div>
-
-<div class="footer">
-СПИЗЖЕННО У САРАТОВА EGORKIN
-</div>
-
+<div class="res-label">
+Ставка/час
 </div>
 
 <div
-id="popup"
-class="popup"
+id="rate"
+class="res-val"
 >
-ТЫ ПОМОГ ОБОССАТЬ ОДНОГО ДОЛБОЕБА
+—
+</div>
+
+</div>
+
+<div class="result-row">
+
+<div class="res-label">
+Оклад
+</div>
+
+<div
+id="oklad"
+class="res-val"
+>
+—
+</div>
+
+</div>
+
+<div class="result-row">
+
+<div class="res-label">
+Бонус
+</div>
+
+<div
+id="bonus"
+class="res-val"
+>
+—
+</div>
+
+</div>
+
+<div class="result-row total">
+
+<div class="res-label">
+Итого
+</div>
+
+<div
+id="total"
+class="res-val"
+>
+—
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 <script>
 
-function format(num){
+const rateSlider =
+document.getElementById(
+'rateSlider'
+);
 
-return new Intl.NumberFormat(
-'ru-RU'
-).format(num);
+const premiumSlider =
+document.getElementById(
+'premiumSlider'
+);
+
+const rateValue =
+document.getElementById(
+'rateValue'
+);
+
+const premiumValue =
+document.getElementById(
+'premiumValue'
+);
+
+function fmtMoney(n){
+
+return Number(n)
+.toFixed(2) + ' ₽';
+
+}
+
+function normalizeKPIraw(raw){
+
+const v =
+parseFloat(raw);
+
+if(isNaN(v))
+return null;
+
+if(v < 80)
+return 0;
+
+if(v >= 80 && v < 90)
+return 60;
+
+if(v >= 90 && v < 100)
+return 80;
+
+if(v === 100)
+return 100;
+
+if(v > 100){
+
+const over =
+v - 100;
+
+return Math.min(
+100 + over * 2.5,
+125
+);
+
+}
+
+return null;
 
 }
 
 function calculate(){
 
-const rateLunch =
-Number(
+const baseRate =
+parseFloat(
+rateSlider.value
+);
+
+const premiumRate =
+parseFloat(
+premiumSlider.value
+);
+
+const format =
 document.getElementById(
-'rateLunch'
+'format'
+).value;
+
+const hw =
+parseFloat(
+document.getElementById(
+'hoursWith'
+).value
+) || 0;
+
+const hwo =
+parseFloat(
+document.getElementById(
+'hoursWithout'
+).value
+) || 0;
+
+const buffer =
+parseFloat(
+document.getElementById(
+'hoursBuffer'
+).value
+) || 0;
+
+const rate =
+format === 'MAU'
+? baseRate * 1.10
+: baseRate;
+
+/* ОКЛАД */
+
+const oklad =
+rate * (hw + buffer);
+
+/* БАЗА БОНУСА */
+
+const bonusHour =
+premiumRate;
+
+const baseBonus =
+bonusHour * hwo;
+
+let bonus =
+baseBonus;
+
+const used = [];
+
+for(let i=1;i<=4;i++){
+
+const w =
+parseFloat(
+document.getElementById(
+'w'+i
 ).value
 );
 
-const hours =
-Number(
+const v =
+parseFloat(
 document.getElementById(
-'hours'
+'v'+i
 ).value
 );
 
-const salary =
-rateLunch * hours;
+if(
+!isNaN(w)
+||
+!isNaN(v)
+){
 
-const percents =
-document.querySelectorAll(
-'.kpiPercent'
+used.push({
+
+w:isNaN(w)?0:w,
+v:isNaN(v)?0:v
+
+});
+
+}
+
+}
+
+if(used.length > 0){
+
+const sumW =
+used.reduce(
+(s,it)=>s+it.w,
+0
 );
 
-const values =
-document.querySelectorAll(
-'.kpiValue'
+const normalized =
+sumW === 0
+? used.map(()=>100/used.length)
+: used.map(
+it=>(it.w/sumW)*100
 );
 
-let bonus = 0;
+bonus = 0;
 
-for(let i=0;i<4;i++){
+for(let i=0;i<used.length;i++){
+
+const nRaw =
+normalizeKPIraw(
+used[i].v
+);
+
+const coefficient =
+nRaw === null
+? 0
+: nRaw / 100;
 
 bonus +=
-Number(percents[i].value)
+(baseBonus / 100)
 *
-Number(values[i].value)
+normalized[i]
 *
-4;
+coefficient;
+
+}
 
 }
 
 const total =
-salary + bonus;
+oklad + bonus;
 
 document.getElementById(
-'rateResult'
-).innerText =
-format(rateLunch) + ' ₽';
+'rate'
+).textContent =
+fmtMoney(rate);
 
 document.getElementById(
-'salaryResult'
-).innerText =
-format(salary) + ' ₽';
+'oklad'
+).textContent =
+fmtMoney(oklad);
 
 document.getElementById(
-'bonusResult'
-).innerText =
-format(bonus) + ' ₽';
+'bonus'
+).textContent =
+fmtMoney(bonus);
 
 document.getElementById(
-'totalResult'
-).innerText =
-format(total) + ' ₽';
+'total'
+).textContent =
+fmtMoney(total);
+
+rateValue.textContent =
+baseRate + ' ₽';
+
+premiumValue.textContent =
+premiumRate + ' ₽';
 
 }
 
-function showPopup(){
+document.querySelectorAll(
+'input,select'
+).forEach(el=>{
 
-const popup =
-document.getElementById(
-'popup'
+el.addEventListener(
+'input',
+calculate
 );
 
-popup.classList.add(
-'show'
+el.addEventListener(
+'change',
+calculate
 );
 
-setTimeout(()=>{
-
-popup.classList.remove(
-'show'
-);
-
-},2000);
-
-}
+});
 
 calculate();
 
